@@ -3,178 +3,28 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Tienda Tadeísta — por [Tu Nombre]</title>
-  <meta name="description" content="Tienda Tadeísta - proyecto de e-commerce educativo (HTML/CSS/JS).">
-
+  <title>Tienda Tadeísta</title>
+  <meta name="description" content="Tienda Tadeísta - emprendimientos tadeístas">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <style>
- 
-    :root{
-      --bg: #0f1113;
-      --panel: linear-gradient(180deg,#121318 0%, #0f1418 100%);
-      --card:#11141a;
-      --muted:#bfc6d2;
-      --text:#f6f7f9;
-      --accent:#ffb36b;      /* tono cálido para emprendimientos artesanales */
-      --accent-dark:#e69449;
-      --success:#4ad08a;
-      --danger:#ff6b6b;
-      --border: rgba(255,255,255,0.04);
-      --glass: rgba(255,255,255,0.03);
-      --shadow: 0 6px 18px rgba(3,6,9,0.6);
-      --radius:12px;
-      --max-width:1100px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      padding:28px;
-      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(255,179,107,0.03), transparent),
-                  radial-gradient(1000px 500px at 90% 90%, rgba(74,208,138,0.02), transparent),
-                  var(--bg);
-      color:var(--text);
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;
-      gap:24px;
-      min-height:100vh;
-    }
-
-    .wrap{
-      width:100%;
-      max-width:var(--max-width);
-      display:grid;
-      grid-template-columns: 1fr 380px;
-      gap:22px;
-      align-items:start;
-    }
-
-    header {
-      grid-column: 1 / -1;
-      background: var(--panel);
-      padding:18px;
-      border-radius:16px;
-      box-shadow: var(--shadow);
-      border:1px solid var(--border);
-      display:flex;
-      align-items:center;
-      gap:14px;
-    }
-    .logo {
-      width:64px;height:64px;border-radius:12px;
-      background: linear-gradient(135deg,var(--accent),var(--accent-dark));
-      display:flex;align-items:center;justify-content:center;
-      font-weight:700;color:#111; font-size:22px;
-      box-shadow: 0 6px 18px rgba(230,148,73,0.18);
-    }
-    header h1{margin:0;font-size:20px}
-    header p{margin:0;color:var(--muted);font-size:13px}
-
-    .controls{
-      margin-left:auto; display:flex; align-items:center; gap:10px;
-    }
-    .controls small{color:var(--muted)}
-
-    .filtros{display:flex;gap:10px;align-items:center}
-    label{font-size:13px;color:var(--muted)}
-    select{
-      background:var(--card); color:var(--text); border:1px solid var(--border);
-      padding:8px 10px; border-radius:10px; font-size:14px;
-      min-width:160px;
-    }
-    .search{
-      background:var(--card); border-radius:10px; padding:8px 10px; display:flex; gap:8px; align-items:center;
-      border:1px solid var(--border);
-    }
-    .search input{background:transparent;border:0;color:var(--text);outline:none;width:180px}
-
-    #productos{
-      display:grid;
-      grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
-      gap:14px;
-    }
-    .producto{
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-      border-radius:var(--radius);
-      padding:12px;
-      border:1px solid var(--border);
-      display:flex;flex-direction:column;gap:10px;
-      box-shadow: 0 8px 20px rgba(2,6,10,0.5);
-    }
-    .producto .media{
-      height:220px;border-radius:10px;overflow:hidden;background:#0b0d11; display:flex;align-items:center;justify-content:center;
-    }
-    .producto img{width:100%;height:100%;object-fit:cover;display:block}
-    .producto h3{margin:0;font-size:16px}
-    .producto p{margin:0;color:var(--muted);font-size:13px}
-    .meta{display:flex;justify-content:space-between;align-items:center;gap:8px}
-    .precio{font-weight:700;color:var(--accent-dark)}
-    .button{
-      margin-top:8px;background:linear-gradient(180deg,var(--accent),var(--accent-dark));
-      border:none;padding:10px;border-radius:10px;color:#111;font-weight:600;cursor:pointer;
-      box-shadow: 0 6px 14px rgba(233,147,78,0.12);
-    }
-
-    .carrito{
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-      padding:16px;border-radius:16px;border:1px solid var(--border);
-      box-shadow: var(--shadow);
-    }
-    .carrito h2{margin:0 0 8px;font-size:18px}
-    .carrito p{margin:0;color:var(--muted);font-size:13px}
-    #lista-carrito{list-style:none;padding:0;margin:12px 0 0;display:flex;flex-direction:column;gap:8px;max-height:360px;overflow:auto}
-    #lista-carrito li{
-      display:flex;justify-content:space-between;align-items:center;gap:8px;
-      background:var(--glass);padding:10px;border-radius:10px;border:1px solid var(--border);
-    }
-    .cart-left{display:flex;gap:10px;align-items:center}
-    .cart-thumb{width:56px;height:56px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#0b0d11}
-    .cart-thumb img{width:100%;height:100%;object-fit:cover}
-    .cart-title{font-size:13px}
-    .cart-actions{display:flex;align-items:center;gap:6px}
-    .qty{display:flex;align-items:center;gap:6px}
-    .qty button{background:transparent;border:1px solid var(--border);padding:6px 8px;border-radius:8px;color:var(--text);cursor:pointer}
-    .remove{background:transparent;border:1px solid var(--danger);color:var(--danger);padding:6px 8px;border-radius:8px;cursor:pointer}
-
-    .totales{border-top:1px dashed var(--border);padding-top:12px;margin-top:12px}
-    .totales p{display:flex;justify-content:space-between;margin:6px 0;color:var(--muted)}
-    .totales .total{font-size:18px;color:var(--text);font-weight:700}
-
-    .acciones{display:flex;gap:8px;margin-top:12px}
-    .vaciar{background:transparent;border:1px solid var(--danger);color:var(--danger);padding:10px;border-radius:10px;cursor:pointer}
-    .finalizar{background:linear-gradient(180deg,#1d8cff,#0066ff);border:none;padding:10px;border-radius:10px;color:white;cursor:pointer}
-    .info-pay{margin-top:12px;font-size:13px;color:var(--muted)}
-
-    /* small responsive */
-    @media (max-width:980px){
-      .wrap{grid-template-columns:1fr; padding-bottom:40px}
-      .carrito{order:2}
-    }
-    .hint{background:rgba(255,255,255,0.02);padding:10px;border-radius:10px;border:1px dashed var(--border);color:var(--muted);font-size:13px}
-    .tag{background:rgba(0,0,0,0.25);padding:4px 8px;border-radius:8px;font-size:12px;color:var(--muted)}
-    .brand-small{font-size:12px;color:var(--muted)}
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="wrap" role="main" aria-labelledby="tienda-title">
-    <header role="banner" aria-hidden="false">
-      <div class="logo" aria-hidden="true">T</div>
+    <header role="banner">
+      <div class="logo">T</div>
       <div>
-        <h1 id="tienda-title">Tienda Tadeísta — por [Tu Nombre]</h1>
-        <p>Emprendimientos tadeístas: accesorios, joyería, decor y tecnología creativa.</p>
-        <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+        <h1 id="tienda-title">Tienda Tadeísta</h1>
+        <p>Emprendimientos tadeístas: accesorios, joyería, hogar y tecnología creativa.</p>
+        <div class="tags">
           <span class="tag">Handmade • Local • Creativo</span>
-          <span class="brand-small">Referencias: Moon Sun, Lun4res, SleekTech, CanaShop, Montresor, LaFurrHouse, LaMelena</span>
+          <span class="brand-small">Inspirado en: Moon Sun, Lun4res, SleekTech, CanaShop, Montresor, LaFurrHouse, LaMelena</span>
         </div>
       </div>
 
-      <div class="controls" role="region" aria-label="Controles de búsqueda y filtro">
+      <div class="controls">
         <div class="filtros">
           <label for="categoria">Categoría</label>
-          <select id="categoria" name="categoria" aria-label="Filtrar por categoría">
+          <select id="categoria" name="categoria">
             <option value="todos">Todos</option>
             <option value="Accesorios">Accesorios</option>
             <option value="Hogar">Hogar</option>
@@ -184,23 +34,23 @@
           </select>
         </div>
 
-        <div class="search" aria-hidden="false" title="Buscar producto">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="opacity:0.7"><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="1.5"/></svg>
-          <input id="buscar" placeholder="Buscar producto..." aria-label="Buscar producto">
+        <div class="search">
+          <input id="buscar" placeholder="Buscar producto..." />
         </div>
       </div>
     </header>
 
-    <section id="productos" aria-live="polite" aria-busy="false">
-    </section>
+    <!-- Catálogo -->
+    <section id="productos"></section>
 
-    <aside class="carrito" aria-label="Carrito de compras">
+    <!-- Carrito -->
+    <aside class="carrito">
       <h2>🛒 Carrito</h2>
       <p><strong>Productos en carrito: <span id="cantidad-carrito">0</span></strong></p>
 
-      <ul id="lista-carrito" aria-live="polite"></ul>
+      <ul id="lista-carrito"></ul>
 
-      <div class="totales" aria-hidden="false">
+      <div class="totales">
         <p>Subtotal: <strong id="subtotal-text">COP $0</strong></p>
         <p>Descuento: <strong id="descuento-text">COP $0</strong></p>
         <p>Impuestos (IVA 19%): <strong id="impuestos-text">COP $0</strong></p>
@@ -213,299 +63,17 @@
       </div>
 
       <div class="info-pay">
-        <p id="paypal-hint">Método de pago: PayPal (sandbox). El botón aparece sólo si el total es mayor que 0.</p>
-        <div id="paypal-button-container" style="margin-top:10px; display:none;"></div>
+        <p id="paypal-hint">El botón PayPal (sandbox) aparece cuando el total es mayor que 0.</p>
+        <div id="paypal-button-container" style="display:none;"></div>
       </div>
     </aside>
   </div>
 
+  <footer>
+    <p>Desarrollado por <strong>Andrés Alaix</strong> — Tienda Tadeísta</p>
+  </footer>
+
   <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=COP&components=buttons,funding-eligibility"></script>
-
-  <script>
-
-    const MONEDA   = 'COP';
-    const LOCALE   = 'es-CO';
-    const TAX_RATE = 0.19;     // IVA 19% (ejemplo)
-    const DESCUENTO = 0.00;    // descuento fijo (COP), 0 para desactivar
-
-
-    const productos = [
-      { id: 101, nombre: "Velón MoonSun (aroma cítrico) - 200g", precio: 25000, categoria: "Hogar", img: "https://source.unsplash.com/400x400/?candle,handmade" },
-      { id: 102, nombre: "Sticker pack Lun4res (set x6)", precio: 12000, categoria: "Accesorios", img: "https://source.unsplash.com/400x400/?stickers,art" },
-      { id: 103, nombre: "Soporte para celular SleekTech - madera", precio: 45000, categoria: "Tecnología", img: "https://source.unsplash.com/400x400/?phone,stand,wood" },
-      { id: 104, nombre: "Collar minimal Montresor (acero) ", precio: 68000, categoria: "Joyería", img: "https://source.unsplash.com/400x400/?necklace,minimal" },
-      { id: 105, nombre: "Camita LaFurrHouse (pequeña) - para mascotas", precio: 78000, categoria: "Mascotas", img: "https://source.unsplash.com/400x400/?pet,bed" },
-      { id: 106, nombre: "Café artesanal LaMelena - bolsa 250g", precio: 32000, categoria: "Hogar", img: "https://source.unsplash.com/400x400/?coffee,bag" },
-      { id: 107, nombre: "Tarjeta regalo CanaShop - $50.000", precio: 50000, categoria: "Accesorios", img: "https://source.unsplash.com/400x400/?gift,card" },
-      { id: 108, nombre: "Llavero artesanal (edición Tadeísta)", precio: 9000, categoria: "Accesorios", img: "https://source.unsplash.com/400x400/?keychain,handmade" }
-    ];
-
-    let carrito = new Map(); // guardamos { id -> {id,nombre,precio,categoria,img,cantidad} }
-
-    const el = {
-      contProds: document.getElementById('productos'),
-      lista:     document.getElementById('lista-carrito'),
-      subtotal:  document.getElementById('subtotal-text'),
-      impuestos: document.getElementById('impuestos-text'),
-      descuento: document.getElementById('descuento-text'),
-      total:     document.getElementById('total-text'),
-      cantidad:  document.getElementById('cantidad-carrito'),
-      select:    document.getElementById('categoria'),
-      buscar:    document.getElementById('buscar'),
-      btnVaciar: document.getElementById('btn-vaciar'),
-      btnFinal:  document.getElementById('btn-finalizar'),
-      paypal:    document.getElementById('paypal-button-container'),
-      paypalHint:document.getElementById('paypal-hint')
-    };
-
-    const money = new Intl.NumberFormat(LOCALE, { style: 'currency', currency: MONEDA, maximumFractionDigits: 0 });
-
-
-    function renderProductos(lista){
-      el.contProds.setAttribute('aria-busy','true');
-      el.contProds.innerHTML = '';
-
-      if (!Array.isArray(lista) || lista.length === 0){
-        el.contProds.innerHTML = `<div class="hint">No se encontraron productos para la búsqueda/filtrado.</div>`;
-        el.contProds.setAttribute('aria-busy','false');
-        return;
-      }
-
-      lista.forEach(p=>{
-        const card = document.createElement('article');
-        card.className = 'producto';
-        card.innerHTML = `
-          <div class="media"><img src="${p.img}" alt="${p.nombre}"></div>
-          <h3>${p.nombre}</h3>
-          <p class="meta"><span class="precio">${money.format(Number(p.precio)||0)}</span><span class="tag">${p.categoria}</span></p>
-          <p style="color:var(--muted);font-size:13px">Emprendimiento tadeísta</p>
-          <button class="button" data-add="${p.id}">Agregar al carrito</button>
-        `;
-        const img = card.querySelector('img');
-        img.addEventListener('error', ()=>{
-          img.src = 'https://via.placeholder.com/400x400?text=Producto';
-          img.alt = p.nombre + ' (imagen no disponible)';
-        });
-        el.contProds.appendChild(card);
-      });
-
-      el.contProds.setAttribute('aria-busy','false');
-    }
-
-    function filtrarYBuscar(){
-      const cat = el.select.value;
-      const q = (el.buscar.value || '').trim().toLowerCase();
-      let data = productos.slice();
-      if (cat && cat !== 'todos') data = data.filter(p => String(p.categoria) === cat);
-      if (q) data = data.filter(p => p.nombre.toLowerCase().includes(q) || String(p.categoria).toLowerCase().includes(q));
-      renderProductos(data);
-      localStorage.setItem('filtro_categoria', cat);
-      localStorage.setItem('filtro_busqueda', q);
-    }
-
-    function cargarFiltros(){
-      const f = localStorage.getItem('filtro_categoria');
-      const b = localStorage.getItem('filtro_busqueda');
-      if (f) el.select.value = f;
-      if (b) el.buscar.value = b;
-    }
-
-    function persist(){ localStorage.setItem('carrito', JSON.stringify(Array.from(carrito.entries()))); }
-    function load(){
-      const data = localStorage.getItem('carrito');
-      if (data){ carrito = new Map(JSON.parse(data)); }
-    }
-
-    function totales(){
-      const subtotal = [...carrito.values()].reduce((a,i)=> a + Number(i.precio||0)*Number(i.cantidad||0), 0);
-      const desc = Math.min(DESCUENTO, subtotal);
-      const base = subtotal - desc;
-      const impuestos = Math.round(base * TAX_RATE);
-      const total = Math.round(base + impuestos);
-      const cantidad = [...carrito.values()].reduce((a,i)=> a + Number(i.cantidad||0), 0);
-      return { subtotal, descuento: desc, impuestos, total, cantidad };
-    }
-
-    function pintarCarrito(){
-      el.lista.innerHTML = '';
-      if (carrito.size === 0){
-        el.lista.innerHTML = `<li class="hint">El carrito está vacío. Agrega productos desde el catálogo.</li>`;
-      } else {
-        carrito.forEach(it=>{
-          const li = document.createElement('li');
-          li.innerHTML = `
-            <div class="cart-left">
-              <div class="cart-thumb"><img src="${it.img}" alt="${it.nombre}"></div>
-              <div>
-                <div class="cart-title">${it.nombre}</div>
-                <div style="color:var(--muted);font-size:13px">${money.format(it.precio)} • ${it.categoria}</div>
-              </div>
-            </div>
-            <div class="cart-actions">
-              <div class="qty">
-                <button aria-label="disminuir" data-dec="${it.id}">−</button>
-                <div style="min-width:20px;text-align:center">${it.cantidad}</div>
-                <button aria-label="aumentar" data-inc="${it.id}">+</button>
-              </div>
-              <button class="remove" aria-label="Eliminar" data-del="${it.id}">Eliminar</button>
-            </div>
-          `;
-          const img = li.querySelector('img');
-          img.addEventListener('error', ()=> img.src='https://via.placeholder.com/80x80?text=Producto');
-          el.lista.appendChild(li);
-        });
-      }
-
-      const {subtotal,descuento,impuestos,total,cantidad} = totales();
-      el.subtotal.textContent  = money.format(subtotal);
-      el.descuento.textContent = money.format(descuento);
-      el.impuestos.textContent = money.format(impuestos);
-      el.total.textContent     = money.format(total);
-      el.cantidad.textContent  = cantidad;
-
-      el.paypal.style.display = total > 0 ? 'block' : 'none';
-      renderPayPal(total);
-    }
-
-    function add(id){
-      const p = productos.find(x=> x.id === id);
-      if(!p) return alert('Producto no encontrado. Revisa tu array "productos".');
-      const it = carrito.get(id);
-      if (it) {
-        it.cantidad++;
-        carrito.set(id, it);
-      } else {
-        carrito.set(id, {...p, cantidad:1});
-      }
-      persist();
-      pintarCarrito();
-      showToast(`Añadido: ${p.nombre}`);
-    }
-    function dec(id){
-      const it = carrito.get(id); if(!it) return;
-      it.cantidad--; if (it.cantidad<=0) carrito.delete(id); else carrito.set(id, it);
-      persist(); pintarCarrito();
-    }
-    function del(id){ 
-      const it = carrito.get(id);
-      if(!it) return;
-      if (confirm(`¿Eliminar "${it.nombre}" del carrito?`)){
-        carrito.delete(id); persist(); pintarCarrito();
-      }
-    }
-
-
-    let paypalRenderedTotal = null;
-    function renderPayPal(total){
-      if(!window.paypal) {
-        el.paypalHint.textContent = 'PayPal no está disponible en este entorno.';
-        return;
-      }
-      if(total <= 0){ paypalRenderedTotal=null; el.paypal.innerHTML=''; return; }
-      if(paypalRenderedTotal === total && el.paypal.childElementCount > 0) return;
-
-      paypalRenderedTotal = total;
-      el.paypal.innerHTML = '';
-      paypal.Buttons({
-        style:{layout:'vertical', color:'blue', shape:'pill', label:'pay'},
-        createOrder:(data,actions)=>actions.order.create({
-          purchase_units:[{ amount:{ value: (total/1).toFixed(0), currency_code: MONEDA } }]
-        }),
-        onApprove:(data,actions)=>actions.order.capture().then(d=>{
-          alert(`¡Pago aprobado! Gracias${d?.payer?.name?.given_name ? ' ' + d.payer.name.given_name : ''}. Pedido confirmado.`);
-          carrito.clear(); persist(); pintarCarrito();
-        }),
-        onError:(err)=>{ console.error(err); alert('Error con el pago. Reintenta.'); }
-      }).render('#paypal-button-container');
-    }
-
-
-    let toastTimer = null;
-    function showToast(text){
-      let t = document.getElementById('gpt-toast');
-      if(!t){
-        t = document.createElement('div');
-        t.id = 'gpt-toast';
-        t.style.position='fixed';
-        t.style.right='18px';
-        t.style.bottom='18px';
-        t.style.background='linear-gradient(90deg, rgba(0,0,0,0.6), rgba(0,0,0,0.4))';
-        t.style.border='1px solid rgba(255,255,255,0.04)';
-        t.style.padding='10px 14px';
-        t.style.borderRadius='10px';
-        t.style.color='var(--text)';
-        t.style.zIndex=9999;
-        document.body.appendChild(t);
-      }
-      t.textContent = text;
-      t.style.opacity = '1';
-      if(toastTimer) clearTimeout(toastTimer);
-      toastTimer = setTimeout(()=> t.style.opacity='0', 1800);
-    }
-
-
-    document.addEventListener('click', e=>{
-      const addBtn = e.target.closest('[data-add]'); if(addBtn) return add(+addBtn.dataset.add);
-      const incBtn = e.target.closest('[data-inc]'); if(incBtn) return add(+incBtn.dataset.inc);
-      const decBtn = e.target.closest('[data-dec]'); if(decBtn) return dec(+decBtn.dataset.dec);
-      const delBtn = e.target.closest('[data-del]'); if(delBtn) return del(+delBtn.dataset.del);
-    });
-
-    document.addEventListener('click', e=>{
-      const decBtn = e.target.closest('[data-dec]'); if(decBtn) return dec(+decBtn.dataset.dec);
-      const incBtn = e.target.closest('[data-inc]'); if(incBtn) return add(+incBtn.dataset.inc);
-      const delBtn = e.target.closest('[data-del]'); if(delBtn) return del(+delBtn.dataset.del);
-    });
-
-    el.select.addEventListener('change', filtrarYBuscar);
-    el.buscar.addEventListener('input', ()=>{
-      clearTimeout(window._buscadorDebounce);
-      window._buscadorDebounce = setTimeout(filtrarYBuscar, 220);
-    });
-
-    el.btnVaciar.addEventListener('click', ()=>{
-      if(carrito.size === 0) return alert('El carrito ya está vacío.');
-¿
-      if(confirm('¿Estás segur@? Esto vaciará todo el carrito.')){
-        carrito.clear();
-        persist();
-        pintarCarrito();
-        alert('Carrito vaciado. ¡Sigue apoyando a los emprendimientos tadeístas!');
-      } else {
-        showToast('Acción cancelada');
-      }
-    });
-
-    el.btnFinal.addEventListener('click', ()=>{
-      if(carrito.size === 0) return alert('Carrito vacío. Agrega productos antes de finalizar.');
-      const {subtotal,descuento,impuestos,total,cantidad} = totales();
-      const lines = [...carrito.values()].map(i => `${i.nombre} x${i.cantidad} — ${money.format(i.precio * i.cantidad)}`);
-      const resumen = [
-        `Resumen de compra:`,
-        ...lines,
-        '',
-        `Subtotal: ${money.format(subtotal)}`,
-        `Descuento: ${money.format(descuento)}`,
-        `Impuestos: ${money.format(impuestos)}`,
-        `Total: ${money.format(total)}`,
-        '',
-        `Gracias por apoyar a los emprendedores tadeístas.`
-      ].join('\n');
-      alert(resumen);
-      carrito.clear();
-      persist();
-      pintarCarrito();
-    });
-
-
-    (function init(){
-      cargarFiltros();
-      renderProductos(productos);
-      load();
-      pintarCarrito();
-      document.querySelector('main')?.focus?.();
-    })();
-
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
